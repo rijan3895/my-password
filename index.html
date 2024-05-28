@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Display Website</title>
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xxx" crossorigin="anonymous" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            position: relative;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            position: relative;
+        }
+        .password-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 400px;
+        }
+        input[type="password"], input[type="text"] {
+            padding: 15px;
+            font-size: 18px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 40px);
+            margin-right: 10px;
+        }
+        .eye-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        button {
+            padding: 15px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        /* Instagram logo styles */
+        .social-logo {
+            position: absolute;
+            bottom: 20px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        .instagram-logo {
+            left: 20px;
+        }
+        .facebook-logo {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Heading -->
+        <h1>Enter My Password to Explore My World</h1>
+        
+        <div style="position: relative;">
+            <img src="https://i.seadn.io/s/raw/files/5909540d54dce917358ff9fdd1060763.png?auto=format&dpr=1&w=1000" alt="Example Image">
+            <div class="password-container">
+                <input id="passwordInput" type="password" placeholder="Enter your password">
+                <input id="displayPassword" type="text" readonly style="display: none;">
+                <i class="eye-icon far fa-eye-slash" onclick="togglePasswordVisibility()"></i>
+                <button onclick="resetPassword()">Enter</button>
+            </div>
+        </div>
+        <!-- Instagram logo with link -->
+        <a href="https://www.instagram.com/rakesh_bhattarai9988/" target="_blank">
+            <img class="social-logo instagram-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/240px-Instagram_icon.png" alt="Instagram Logo">
+        </a>
+        <!-- Facebook logo with link -->
+        <a href="https://www.facebook.com/profile.php?id=61550299945533" target="_blank">
+            <img class="social-logo facebook-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/240px-Facebook_f_logo_%282019%29.svg.png" alt="Facebook Logo">
+        </a>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById("passwordInput");
+            var displayPassword = document.getElementById("displayPassword");
+            var eyeIcon = document.querySelector(".eye-icon");
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                displayPassword.value = passwordInput.value;
+                displayPassword.style.display = "inline-block";
+                eyeIcon.classList.remove("fa-eye-slash");
+                eyeIcon.classList.add("fa-eye");
+            } else {
+                passwordInput.type = "password";
+                displayPassword.style.display = "none";
+                eyeIcon.classList.remove("fa-eye");
+                eyeIcon.classList.add("fa-eye-slash");
+            }
+        }
+
+        function resetPassword() {
+            var passwordInput = document.getElementById("passwordInput");
+            var displayPassword = document.getElementById("displayPassword");
+
+            passwordInput.value = "";
+            displayPassword.value = "";
+            displayPassword.style.display = "none";
+            passwordInput.type = "password";
+
+            var eyeIcon = document.querySelector(".eye-icon");
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        }
+    </script>
+</body>
+</html>
